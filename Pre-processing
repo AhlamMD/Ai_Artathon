@@ -1,0 +1,273 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Manipulate Images for Deep Learning in Python With PIL/Pillow"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1. resizing and arranging multiple images to get one image"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from PIL import Image"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "## load the image\n",
+    "im1 = Image.open('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/1.jpg')\n",
+    "im2 = Image.open('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/2.jpg')\n",
+    "im3 = Image.open('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/3.jpg')\n",
+    "im4 = Image.open('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/4.jpg')\n",
+    "im5 = Image.open('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/5.jpg')\n",
+    "im6 = Image.open('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/6.jpg')\n",
+    "im7 = Image.open('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/7.jpg')\n",
+    "im8 = Image.open('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/8.jpg')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "im_list= [im1,im2,im3,im4,im5,im6,im7,im8]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "image name: <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=501x687 at 0x10B71CF98>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(501, 687)\n",
+      "------ end------\n",
+      "image name: <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=381x288 at 0x10B9B7F98>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(381, 288)\n",
+      "------ end------\n",
+      "image name: <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=507x696 at 0x10B9BD630>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(507, 696)\n",
+      "------ end------\n",
+      "image name: <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=597x529 at 0x10B9BDFD0>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(597, 529)\n",
+      "------ end------\n",
+      "image name: <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=450x675 at 0x10B9BE080>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(450, 675)\n",
+      "------ end------\n",
+      "image name: <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=325x532 at 0x10B9BEB00>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(325, 532)\n",
+      "------ end------\n",
+      "image name: <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=1500x1364 at 0x10B9C37F0>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(1500, 1364)\n",
+      "------ end------\n",
+      "image name: <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=453x506 at 0x10B9C4908>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(453, 506)\n",
+      "------ end------\n"
+     ]
+    }
+   ],
+   "source": [
+    "# summarize some details about the image\n",
+    "for image in im_list:\n",
+    "    print(\"image name:\",image)\n",
+    "    print(image.format)\n",
+    "    print(image.mode)\n",
+    "    print(image.size)\n",
+    "    print(\"------ end------\")\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# create a thumbnail and preserve aspect ratio\n",
+    "for im in im_list:\n",
+    "    im.thumbnail((1024,1024))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "image name :  <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=501x687 at 0x10B71CF98>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(501, 687)\n",
+      "------ end------\n",
+      "image name :  <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=381x288 at 0x10B9B7F98>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(381, 288)\n",
+      "------ end------\n",
+      "image name :  <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=507x696 at 0x10B9BD630>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(507, 696)\n",
+      "------ end------\n",
+      "image name :  <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=597x529 at 0x10B9BDFD0>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(597, 529)\n",
+      "------ end------\n",
+      "image name :  <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=450x675 at 0x10B9BE080>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(450, 675)\n",
+      "------ end------\n",
+      "image name :  <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=325x532 at 0x10B9BEB00>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(325, 532)\n",
+      "------ end------\n",
+      "image name :  <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=1024x931 at 0x10B9C37F0>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(1024, 931)\n",
+      "------ end------\n",
+      "image name :  <PIL.JpegImagePlugin.JpegImageFile image mode=RGB size=453x506 at 0x10B9C4908>\n",
+      "JPEG\n",
+      "RGB\n",
+      "(453, 506)\n",
+      "------ end------\n"
+     ]
+    }
+   ],
+   "source": [
+    "# report the size of the thumbnail\n",
+    "for image in im_list:\n",
+    "    print(\"image name : \", image)\n",
+    "    print(image.format)\n",
+    "    print(image.mode)\n",
+    "    print(image.size)\n",
+    "    print(\"------ end------\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def get_concat_h_multi_resize(im_list, resample=Image.BICUBIC):\n",
+    "    min_height = min(im.height for im in im_list)\n",
+    "    im_list_resize = [im.resize((int(im.width * min_height / im.height), min_height),resample=resample)\n",
+    "                      for im in im_list]\n",
+    "    total_width = sum(im.width for im in im_list_resize)\n",
+    "    dst = Image.new('RGB', (total_width, min_height))\n",
+    "    pos_x = 0\n",
+    "    for im in im_list_resize:\n",
+    "        dst.paste(im, (pos_x, 0))\n",
+    "        pos_x += im.width\n",
+    "    return dst\n",
+    "\n",
+    "def get_concat_v_multi_resize(im_list, resample=Image.BICUBIC):\n",
+    "    min_width = min(im.width for im in im_list)\n",
+    "    im_list_resize = [im.resize((min_width, int(im.height * min_width / im.width)),resample=resample)\n",
+    "                      for im in im_list]\n",
+    "    total_height = sum(im.height for im in im_list_resize)\n",
+    "    dst = Image.new('RGB', (min_width, total_height))\n",
+    "    pos_y = 0\n",
+    "    for im in im_list_resize:\n",
+    "        dst.paste(im, (0, pos_y))\n",
+    "        pos_y += im.height\n",
+    "    return dst\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "get_concat_h_multi_resize(im_list).save('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/pillow/pillow_concat_h_multi_resize.jpg')\n",
+    "get_concat_v_multi_resize(im_list).save('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/pillow_concat_v_multi_resize.jpg')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def get_concat_tile_resize(im_list, resample=Image.BICUBIC):\n",
+    "    im_list_v = [get_concat_h_multi_resize(im_list_h, resample=resample) for im_list_h in im_list]\n",
+    "    return get_concat_v_multi_resize(im_list_v, resample=resample)\n",
+    "\n",
+    "get_concat_tile_resize([[im1,im2, im3,im4],\n",
+    "                        [im5, im6, im7, im8]]).save('/Users/ahlamalduhaish/Desktop/Ai-Artathon/images/pillow/pillow_concat_tile_resize.jpg')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.2"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
